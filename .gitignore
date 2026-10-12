@@ -16,3 +16,7 @@ gradle-test.zip
 build/
 .dart_tool/
 *.zip
+
+* - Copy/
+.idea/
+.artifacts/
