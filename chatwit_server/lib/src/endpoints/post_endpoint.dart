@@ -35,7 +35,9 @@ class PostEndpoint extends Endpoint {
       throw ArgumentError('Select at least one follower to share with.');
     }
     if (postAudience != 'followers' && selectedFollowers.isNotEmpty) {
-      throw ArgumentError('Follower recipients require the followers audience.');
+      throw ArgumentError(
+        'Follower recipients require the followers audience.',
+      );
     }
     if (selectedFollowers.isNotEmpty) {
       final actualFollowers = await Follow.db.find(
@@ -46,7 +48,9 @@ class PostEndpoint extends Endpoint {
       );
       if (actualFollowers.map((follow) => follow.followerId).toSet().length !=
           selectedFollowers.length) {
-        throw ArgumentError('One or more selected users are not your followers.');
+        throw ArgumentError(
+          'One or more selected users are not your followers.',
+        );
       }
     }
 
@@ -164,9 +168,7 @@ class PostEndpoint extends Endpoint {
       session,
       where: (t) =>
           (t.audience.equals('everyone') | t.userId.equals(userId)) |
-          (sharedPostIds.isEmpty
-              ? t.id.equals(-1)
-              : t.id.inSet(sharedPostIds)),
+          (sharedPostIds.isEmpty ? t.id.equals(-1) : t.id.inSet(sharedPostIds)),
       orderBy: (t) => t.createdAt.desc(),
       include: Post.include(author: UserRegistration.include()),
     );
@@ -183,9 +185,7 @@ class PostEndpoint extends Endpoint {
       session,
       where: (t) =>
           (t.audience.equals('everyone') | t.userId.equals(userId)) |
-          (sharedPostIds.isEmpty
-              ? t.id.equals(-1)
-              : t.id.inSet(sharedPostIds)),
+          (sharedPostIds.isEmpty ? t.id.equals(-1) : t.id.inSet(sharedPostIds)),
       orderBy: (t) => t.createdAt.desc(),
       limit: limit,
       offset: offset,

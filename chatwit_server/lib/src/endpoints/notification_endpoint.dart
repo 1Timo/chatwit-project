@@ -8,7 +8,11 @@ class NotificationEndpoint extends Endpoint {
   @override
   bool get requireLogin => true;
 
-  Future<void> registerDeviceToken(Session session, String token, String deviceType) async {
+  Future<void> registerDeviceToken(
+    Session session,
+    String token,
+    String deviceType,
+  ) async {
     final authInfo = session.authenticated;
     if (authInfo == null) return;
 
@@ -44,26 +48,42 @@ class NotificationEndpoint extends Endpoint {
   }
 
   /// Sends a real push notification through Firebase Cloud Messaging HTTP v1.
-  Future<void> sendPushNotification(Session session, String userId, String title, String body) async {
+  Future<void> sendPushNotification(
+    Session session,
+    String userId,
+    String title,
+    String body,
+  ) async {
     final tokens = await DeviceToken.db.find(
       session,
       where: (t) => t.userId.equals(userId),
     );
 
     if (tokens.isEmpty) {
-      session.log('No registered devices found for user $userId.', level: LogLevel.info);
+      session.log(
+        'No registered devices found for user $userId.',
+        level: LogLevel.info,
+      );
       return;
     }
 
-    final serviceAccountJson = session.serverpod.getPassword('firebaseServiceAccount');
+    final serviceAccountJson = session.serverpod.getPassword(
+      'firebaseServiceAccount',
+    );
     if (serviceAccountJson == null || serviceAccountJson.trim().isEmpty) {
-      session.log('Firebase service account is not configured.', level: LogLevel.error);
+      session.log(
+        'Firebase service account is not configured.',
+        level: LogLevel.error,
+      );
       return;
     }
 
     try {
-      final serviceAccountMap = jsonDecode(serviceAccountJson) as Map<String, dynamic>;
-      final serviceAccount = ServiceAccountCredentials.fromJson(serviceAccountMap);
+      final serviceAccountMap =
+          jsonDecode(serviceAccountJson) as Map<String, dynamic>;
+      final serviceAccount = ServiceAccountCredentials.fromJson(
+        serviceAccountMap,
+      );
       final authClient = await clientViaServiceAccount(
         serviceAccount,
         ['https://www.googleapis.com/auth/firebase.messaging'],
@@ -71,16 +91,22 @@ class NotificationEndpoint extends Endpoint {
       try {
         final projectId = serviceAccountMap['project_id'] as String?;
         if (projectId == null || projectId.isEmpty) {
-          session.log('Firebase service account has no project_id.', level: LogLevel.error);
+          session.log(
+            'Firebase service account has no project_id.',
+            level: LogLevel.error,
+          );
           return;
         }
 
         for (var deviceToken in tokens) {
           final response = await http.post(
-            Uri.parse('https://fcm.googleapis.com/v1/projects/$projectId/messages:send'),
+            Uri.parse(
+              'https://fcm.googleapis.com/v1/projects/$projectId/messages:send',
+            ),
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer ${authClient.credentials.accessToken.data}',
+              'Authorization':
+                  'Bearer ${authClient.credentials.accessToken.data}',
             },
             body: jsonEncode({
               'message': {
@@ -95,16 +121,24 @@ class NotificationEndpoint extends Endpoint {
           );
 
           if (response.statusCode == 200) {
-            session.log('Push notification sent successfully to token: ${deviceToken.token}');
+            session.log(
+              'Push notification sent successfully to token: ${deviceToken.token}',
+            );
           } else {
-            session.log('FCM Error (${response.statusCode}): ${response.body}', level: LogLevel.error);
+            session.log(
+              'FCM Error (${response.statusCode}): ${response.body}',
+              level: LogLevel.error,
+            );
           }
         }
       } finally {
         authClient.close();
       }
     } catch (e) {
-      session.log('Failed to send push notification: $e', level: LogLevel.error);
+      session.log(
+        'Failed to send push notification: $e',
+        level: LogLevel.error,
+      );
     }
   }
 }

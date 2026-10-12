@@ -116,9 +116,7 @@ class UserPreferenceEndpoint extends Endpoint {
       session,
       where: (t) =>
           (t.audience.equals('everyone') | t.userId.equals(userId)) |
-          (sharedPostIds.isEmpty
-              ? t.id.equals(-1)
-              : t.id.inSet(sharedPostIds)),
+          (sharedPostIds.isEmpty ? t.id.equals(-1) : t.id.inSet(sharedPostIds)),
       orderBy: (t) => t.viewCount.desc(),
       limit: limit,
       offset: offset,

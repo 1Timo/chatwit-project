@@ -19,8 +19,7 @@ Future<bool> canViewPost(
 
   final share = await PostShare.db.findFirstRow(
     session,
-    where: (t) =>
-        t.postId.equals(post.id!) & t.userId.equals(viewerId),
+    where: (t) => t.postId.equals(post.id!) & t.userId.equals(viewerId),
   );
   return share != null;
 }

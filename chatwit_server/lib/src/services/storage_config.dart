@@ -17,7 +17,7 @@ class StorageConfig {
   factory StorageConfig.fromEnvironment() {
     final bucket = _envRequired('S3_BUCKET', 'chatwit-storage');
     final region = _envRequired('S3_REGION', 'eu-north-1');
-    
+
     // Allow custom domain for CDN or custom S3 endpoint
     final publicDomain = _envOptional(
       'S3_PUBLIC_DOMAIN',

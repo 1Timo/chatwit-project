@@ -27,7 +27,9 @@ class ChatwitImage {
           didLogLoad = true;
           stopwatch.stop();
           if (kDebugMode) {
-            debugPrint('Media image available in ${stopwatch.elapsedMilliseconds}ms');
+            debugPrint(
+              'Media image available in ${stopwatch.elapsedMilliseconds}ms',
+            );
           }
         }
         return child;
