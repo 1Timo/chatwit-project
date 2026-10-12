@@ -1,0 +1,63 @@
+# docker-compose.prod.yml - Use with Docker Swarm for production
+# Deploy with: docker stack deploy -c docker-compose.prod.yml chatwit
+#
+# Create secrets before deploying:
+# echo "your_secure_password" | docker secret create db_password -
+# echo "your_service_secret" | docker secret create service_secret -
+
+services:
+  server:
+    image: chatwit-server:latest
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+      - "8082:8082"
+    command: ["--mode=production", "--server-id=default", "--logging=normal", "--role=monolith"]
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_NAME=serverpod
+      # Database password is read from /run/secrets/db_password by passwords.yaml
+    secrets:
+      - db_password
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure:5
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1G
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+      - POSTGRES_DB=serverpod
+    secrets:
+      - db_password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: on-failure:5
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+
+volumes:
+  db_data:
+    driver: local
+
+secrets:
+  db_password:
+    external: true

@@ -1,0 +1,7 @@
+class: PollVote
+table: poll_vote
+fields:
+  pollId: int
+  userId: String
+  optionIndex: int
+  createdAt: DateTime

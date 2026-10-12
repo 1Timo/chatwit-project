@@ -1,0 +1,10 @@
+class: Poll
+table: poll
+fields:
+  question: String
+  options: String
+  createdByUserId: String
+  createdAt: DateTime
+  totalVotes: int, default=0
+  isClosed: bool, default=false
+  expiresAt: DateTime?

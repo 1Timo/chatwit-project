@@ -1,0 +1,10 @@
+class: Bookmark
+table: bookmark
+fields:
+  userId: String
+  postId: int
+  createdAt: DateTime
+indexes:
+  bookmark_user_post_idx:
+    fields: userId, postId
+    unique: true

@@ -1,0 +1,11 @@
+class: ProfilePhoto
+table: profile_photo
+fields:
+  userId: String
+  imageType: String
+  imageUrl: String
+  createdAt: DateTime
+
+indexes:
+  profile_photo_user_type_created_idx:
+    fields: userId, imageType, createdAt

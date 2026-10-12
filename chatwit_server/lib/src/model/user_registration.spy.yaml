@@ -1,0 +1,29 @@
+class: UserRegistration
+table: user_registration
+fields:
+  # Relation to the AuthUser table from the serverpod_auth module
+  authUser: module:serverpod_auth_core:AuthUser?, relation(onDelete=Cascade)
+  
+  firstName: String
+  surname: String
+  middleName: String?
+  username: String
+  dateOfBirth: DateTime
+  gender: String
+  bio: String?
+  occupation: String?
+  backgroundUrl: String?
+  profileImageUrl: String?
+  location: String?
+  website: String?
+  isLocationPublic: bool, default=true
+  isDobPublic: bool, default=false
+  createdAt: DateTime?
+
+indexes:
+  auth_user_id_unique_idx:
+    fields: authUserId
+    unique: true
+  username_unique_idx:
+    fields: username
+    unique: true

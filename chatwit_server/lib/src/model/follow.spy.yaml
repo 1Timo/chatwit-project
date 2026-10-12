@@ -1,0 +1,12 @@
+class: Follow
+table: follow
+fields:
+  followerId: String
+  followerName: String
+  followingId: String
+  followingName: String
+  createdAt: DateTime, default=now
+indexes:
+  follow_follower_following_idx:
+    fields: followerId, followingId
+    unique: true

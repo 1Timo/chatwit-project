@@ -1,0 +1,8 @@
+class: Message
+table: chat_messages
+fields:
+  senderId: String
+  senderName: String
+  receiverId: String
+  text: String?
+  createdAt: DateTime

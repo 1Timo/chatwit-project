@@ -1,0 +1,7 @@
+class: Hashtag
+table: hashtag
+
+fields:
+  tag: String  # The hashtag name (without #), unique per tag
+  postId: int  # Post this hashtag appears in
+  createdAt: DateTime

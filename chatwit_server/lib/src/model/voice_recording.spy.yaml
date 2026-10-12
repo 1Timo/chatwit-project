@@ -1,0 +1,10 @@
+class: VoiceRecording
+table: voice_recording
+
+fields:
+  callRoomId: String  # e.g., 'call_userId1_userId2'
+  fromUserId: String
+  toUserId: String
+  recordingUrl: String  # S3 path to the audio file
+  duration: int  # Duration in milliseconds
+  createdAt: DateTime

@@ -1,0 +1,7 @@
+class: Like
+table: like
+fields:
+  postId: int
+  userId: String
+  username: String?
+  createdAt: DateTime

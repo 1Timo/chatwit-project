@@ -1,0 +1,10 @@
+class: MessageVisibility
+table: message_visibility
+fields:
+  userId: String
+  messageId: int
+
+indexes:
+  message_visibility_user_message_idx:
+    fields: userId, messageId
+    unique: true

@@ -1,0 +1,7 @@
+class: Mention
+table: mention
+
+fields:
+  userId: String  # Mentioned user's auth UUID
+  postId: int  # Post containing the mention
+  createdAt: DateTime

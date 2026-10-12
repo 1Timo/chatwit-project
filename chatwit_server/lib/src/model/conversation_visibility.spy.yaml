@@ -1,0 +1,11 @@
+class: ConversationVisibility
+table: conversation_visibility
+fields:
+  userId: String
+  otherUserId: String
+  hiddenBefore: DateTime
+
+indexes:
+  conversation_visibility_user_other_idx:
+    fields: userId, otherUserId
+    unique: true

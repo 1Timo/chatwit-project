@@ -1,0 +1,11 @@
+name: chatwit
+publish_to: none
+
+environment:
+  sdk: '^3.8.0'
+
+workspace:
+  - chatwit_client
+  - chatwit_server
+  - chatwit_flutter
+

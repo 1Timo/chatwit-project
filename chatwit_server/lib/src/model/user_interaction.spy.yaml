@@ -1,0 +1,13 @@
+class: UserInteraction
+table: user_interaction
+fields:
+  userId: String
+  category: String?
+  targetUserId: String? # The author of the post interacted with
+  score: int # Positive for like/interest, negative for skip/not-interested
+  createdAt: DateTime
+
+indexes:
+  user_interaction_idx:
+    fields: userId, createdAt
+    unique: false

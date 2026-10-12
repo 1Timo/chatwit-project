@@ -1,0 +1,11 @@
+name: chatwit
+description: A social messaging app built with Serverpod.
+version: 1.0.0
+environment:
+  sdk: '>=3.8.0 <4.0.0'
+
+dependencies:
+  serverpod: 4.0.4
+
+dev_dependencies:
+  serverpod_cli: 4.0.4

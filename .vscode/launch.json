@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "chatwit_flutter",
+            "cwd": "${workspaceFolder}/chatwit_flutter",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "chatwit_flutter (physical device)",
+            "cwd": "${workspaceFolder}/chatwit_flutter",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "toolArgs": [
+                "--dart-define=SERVER_URL=http://192.168.0.101:8080/"
+            ]
+        },
+        {
+            "name": "chatwit_server",
+            "cwd": "${workspaceFolder}/chatwit_server",
+            "request": "launch",
+            "type": "dart",
+            "preLaunchTask": "docker_compose_up",
+            "program": "bin/main.dart",
+            "env": {
+                "SERVERPOD_PASSWORD_database": "DzHPVJHPpUgYdLvubqMoilLAcx67psqW"
+            },
+            "args": [
+                "--apply-migrations"
+            ]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "chatwit (full stack)",
+            "configurations": [
+                "chatwit_server",
+                "chatwit_flutter"
+            ],
+            "presentation": {
+                "order": 1
+            }
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+class: Conversation
+fields:
+  otherUserId: String
+  otherUserName: String
+  profileImageUrl: String?
+  lastMessage: String?
+  updatedAt: DateTime

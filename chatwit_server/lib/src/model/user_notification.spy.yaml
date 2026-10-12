@@ -1,0 +1,12 @@
+class: UserNotification
+table: user_notification
+
+fields:
+  userId: String  # Recipient's auth UUID
+  title: String  # Notification title
+  body: String  # Notification message
+  type: String  # e.g., "follow", "like", "comment", "mention"
+  relatedUserId: String?  # User who triggered the notification
+  relatedPostId: int?  # Related post ID
+  isRead: bool, default=false
+  createdAt: DateTime

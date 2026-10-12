@@ -1,0 +1,14 @@
+class: Comment
+table: comment
+fields:
+  postId: int
+  userId: String
+  authorId: int?
+  author: UserRegistration?, relation(field=authorId)
+  userName: String
+  fullName: String?
+  profileImageUrl: String?
+  text: String?
+  imageUrl: String?
+  videoUrl: String?
+  createdAt: DateTime

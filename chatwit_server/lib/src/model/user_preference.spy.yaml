@@ -1,0 +1,8 @@
+class: UserPreference
+table: user_preference
+
+fields:
+  userId: String  # Auth UUID
+  categories: String  # JSON array of preferred categories: ["Technology", "Sports", "Entertainment", ...]
+  createdAt: DateTime
+  updatedAt: DateTime

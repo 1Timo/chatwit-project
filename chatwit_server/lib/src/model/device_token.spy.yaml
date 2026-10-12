@@ -1,0 +1,12 @@
+class: DeviceToken
+table: device_token
+fields:
+  userId: String # Auth UUID string
+  token: String
+  deviceType: String # 'android' or 'ios'
+  createdAt: DateTime
+
+indexes:
+  token_idx:
+    fields: token
+    unique: true

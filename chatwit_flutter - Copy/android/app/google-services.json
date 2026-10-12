@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1013136722929",
+    "project_id": "chatwit-social-app",
+    "storage_bucket": "chatwit-social-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013136722929:android:56c9b051a1130877b55250",
+        "android_client_info": {
+          "package_name": "com.example.chatwit_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhCkUbjLbQziXto42pnB3sYHKYM_v3oYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

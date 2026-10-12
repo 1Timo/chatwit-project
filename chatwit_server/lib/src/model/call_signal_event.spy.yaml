@@ -1,0 +1,9 @@
+class: CallSignalEvent
+table: call_signal_event
+fields:
+  roomId: String
+  fromUserId: String
+  toUserId: String
+  type: String
+  payload: String?
+  createdAt: DateTime

@@ -1,0 +1,123 @@
+bookmark:
+  - toggleBookmark:
+  - getBookmarkedPosts:
+  - isBookmarked:
+callSignal:
+  - sendSignal:
+  - listenToSignals:
+chat:
+  - sendMessage:
+  - listenToMessages:
+  - getConversation:
+  - deleteMessageForMe:
+  - deleteMessageForEveryone:
+  - deleteConversationForMe:
+  - deleteConversationForEveryone:
+  - getRecentConversations:
+emailIdp:
+  - login:
+  - startRegistration:
+  - verifyRegistrationCode:
+  - finishRegistration:
+  - startPasswordReset:
+  - verifyPasswordResetCode:
+  - finishPasswordReset:
+  - hasAccount:
+file:
+  - getUploadDescription:
+  - verifyUpload:
+  - getPublicUrl:
+follow:
+  - toggleFollow:
+  - getFollowing:
+  - getFollowers:
+  - getUserFollowing:
+  - getUserFollowers:
+googleIdp:
+  - login:
+  - loginWithCode:
+  - hasAccount:
+notificationDatabase:
+  - getNotifications:
+  - markAsRead:
+  - markAllAsRead:
+  - getUnreadCount:
+  - deleteNotification:
+notification:
+  - registerDeviceToken:
+  - unregisterDeviceToken:
+  - sendPushNotification:
+poll:
+  - createPoll:
+  - getPolls:
+  - getPoll:
+  - vote:
+  - getPollSummary:
+post:
+  - createPost:
+  - getAllPosts:
+  - getPaginatedPosts:
+  - getUserPosts:
+  - editPost:
+  - deletePost:
+  - toggleLike:
+  - getLikes:
+  - incrementViewCount:
+  - batchIncrementViewCounts:
+  - logInteraction:
+  - getRecommendedFeed:
+  - createComment:
+  - getComments:
+  - editComment:
+  - deleteComment:
+  - searchPosts:
+  - verifyUpload:
+  - getUploadDescription:
+  - logRecommendationFeedback:
+  - getPostsByHashtag:
+  - getTrendingHashtags:
+refreshJwtTokens:
+  - refreshAccessToken:
+story:
+  - createStory:
+  - deleteStory:
+  - getActiveStories:
+  - getUploadDescription:
+  - verifyUpload:
+userPreference:
+  - getAvailableCategories:
+  - saveUserPreferences:
+  - getUserPreferences:
+  - getTrendingByCategory:
+  - getTrendingFeed:
+  - getPersonalizedFeed:
+userProfileEdit:
+  - removeUserImage:
+  - setUserImage:
+  - changeUserName:
+  - changeFullName:
+  - get:
+userRegistration:
+  - isRegistrationComplete:
+  - submitRegistration:
+  - deleteAccount:
+  - getUserInfo:
+  - updateBio:
+  - updateBackgroundUrl:
+  - updateProfileImageUrl:
+  - getProfilePhotoHistory:
+  - deleteProfilePhoto:
+  - getAllUsers:
+  - searchUsers:
+  - getUploadDescription:
+  - updateProfile:
+  - verifyUpload:
+voiceRecording:
+  - getUploadDescription:
+  - verifyUpload:
+  - completeVoiceRecording:
+  - getUserVoiceRecordings:
+  - getCallVoiceRecordings:
+  - deleteVoiceRecording:
+greeting:
+  - hello:

@@ -1,0 +1,10 @@
+class: PostShare
+table: post_share
+fields:
+  postId: int
+  userId: String
+  createdAt: DateTime, default=now
+indexes:
+  post_share_post_user_idx:
+    fields: postId, userId
+    unique: true

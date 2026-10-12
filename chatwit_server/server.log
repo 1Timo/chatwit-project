@@ -1,0 +1,8 @@
+SERVERPOD version: 3.4.11, dart: 3.12.2 (stable) (Tue Jun 9 01:11:39 2026 -0700) on "windows_x64", time: 2026-08-12 07:29:23.749447Z
+runMode: development
+serverId: default
+role: monolith
+loggingMode: normal
+applyMigrations: false
+applyRepairMigration: false
+SERVERPOD initialized, time: 2026-08-12 07:29:23.883737Z

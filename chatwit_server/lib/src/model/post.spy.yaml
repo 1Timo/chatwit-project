@@ -1,0 +1,17 @@
+class: Post
+table: post
+fields:
+  userId: String # Auth UUID string
+  authorId: int?
+  author: UserRegistration?, relation(field=authorId)
+  userName: String?
+  fullName: String?
+  profileImageUrl: String?
+  text: String?
+  imageUrl: String?
+  videoUrl: String?
+  category: String?
+  location: String?
+  audience: String, default='everyone'
+  viewCount: int, default=0
+  createdAt: DateTime

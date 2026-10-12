@@ -1,0 +1,10 @@
+class: Story
+table: stories
+fields:
+  userId: String
+  userName: String?
+  profileImageUrl: String?
+  mediaUrl: String
+  mediaType: String # 'image' or 'video'
+  createdAt: DateTime
+  expiresAt: DateTime

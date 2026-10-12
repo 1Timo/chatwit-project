@@ -1,0 +1,12 @@
+class: PostInteraction
+table: post_interaction
+fields:
+  userId: String
+  postId: int
+  interactionType: String # view, like, comment, repost, bookmark, click_interested, click_not_interested
+  createdAt: DateTime
+
+indexes:
+  post_interaction_user_post_idx:
+    fields: userId, postId, interactionType
+    unique: false
